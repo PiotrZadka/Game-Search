@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Button, TextField } from "@material-ui/core";
-// import fetchGameByName from "../../helpers/fetchGameByName";
 import styled from "styled-components";
-import fetchGameByName from "../../helpers/fetchGameByName";
+
 const Box = styled.div`
   display: flex;
   justify-content: center;
@@ -12,12 +11,11 @@ const Text = styled.h1`
   font-size: 16px;
 `;
 
-const SearchBox = () => {
+const SearchBox = (updateListofGames: any) => {
   const [inputGameName, setInputGameName] = useState("");
 
   const handleButtonClick = () => {
-    // fetchClientId();
-    fetchGameByName(inputGameName);
+    updateListofGames(inputGameName);
   };
 
   const handleNameInput = (input: any) => {
