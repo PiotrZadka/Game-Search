@@ -1,6 +1,8 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import SearchBox from "./SearchBox";
+import { shallow } from "enzyme";
+import { link } from "fs";
 
 test("Renders a button", () => {
   render(<SearchBox />);
