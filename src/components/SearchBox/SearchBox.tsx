@@ -11,11 +11,11 @@ const Text = styled.h1`
   font-size: 16px;
 `;
 
-const SearchBox = ({ updateListofGames }: any) => {
+const SearchBox = ({ updateListOfGames }: any) => {
   const [inputGameName, setInputGameName] = useState("");
 
   const handleButtonClick = () => {
-    updateListofGames(inputGameName);
+    updateListOfGames(inputGameName);
   };
 
   const handleNameInput = (input: any) => {
@@ -33,7 +33,11 @@ const SearchBox = ({ updateListofGames }: any) => {
           variant="outlined"
           placeholder="Input game name..."
         />
-        <Button onClick={handleButtonClick} variant="contained" color="primary">
+        <Button 
+          data-testid="buttonSearch"
+          onClick={handleButtonClick} 
+          variant="contained" 
+          color="primary">
           Search
         </Button>
       </Box>

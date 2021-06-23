@@ -1,8 +1,7 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import SearchBox from "./SearchBox";
-import { shallow } from "enzyme";
-import { link } from "fs";
+
 
 test("Renders a button", () => {
   render(<SearchBox />);
@@ -15,3 +14,4 @@ test("Renders an input box", () => {
   const linkElement = screen.getByRole("button", { name: /Search/i });
   expect(linkElement).toBeInTheDocument();
 });
+

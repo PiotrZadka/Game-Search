@@ -9,14 +9,14 @@ const Container = styled.div``;
 const Main = () => {
   const [listOfGames, setListofGames] = useState<IGame[]>([]);
 
-  const updateListofGames = async (title: string) => {
+  const updateListOfGames = async (title: string) => {
     await fetchGameByName(title).then((data: IGame[]) => {
       setListofGames(data);
     });
   };
   return (
     <Container>
-      <SearchBox updateListofGames={updateListofGames} />
+      <SearchBox updateListofGames={updateListOfGames} />
       <ResultTable listOfGames={listOfGames} />
     </Container>
   );
