@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 import {
@@ -14,41 +13,46 @@ const Box = styled.div`
   justify-content: center;
 `;
 
-const ResultTable = ({ listOfGames }: any) => {
-  console.log(listOfGames);
-  return (
+const ResultTable = ({ listOfGames }: IGames) => {
+  return listOfGames.length < 1 ? (
+    <></>
+  ) : (
     <Box>
       <TableContainer>
         <TableHead>
           <TableRow>
-            <TableCell>ID</TableCell>
-            <TableCell>Name</TableCell>
-            <TableCell>Release Date</TableCell>
-            <TableCell>Metacritic Score</TableCell>
+            <TableCell align="center">ID</TableCell>
+            <TableCell align="center">Name</TableCell>
+            <TableCell align="center">Release Date</TableCell>
+            <TableCell align="center">Metacritic Score</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {listOfGames.map(
-            (item: {
-              id: number;
-              name: string;
-              released: string;
-              metacritic: number;
-            }) => (
-              <TableRow key={item.id}>
-                <TableCell component="th" scope="row">
-                  {item.id}
-                </TableCell>
-                <TableCell align="right">{item.name}</TableCell>
-                <TableCell align="right">{item.released}</TableCell>
-                <TableCell align="right">{item.metacritic}</TableCell>
-              </TableRow>
-            )
-          )}
+          {listOfGames.map((game: IGame) => (
+            <TableRow key={game.id}>
+              <TableCell component="th" scope="row" align="center">
+                {game.id}
+              </TableCell>
+              <TableCell align="center">{game.name}</TableCell>
+              <TableCell align="center">{game.released}</TableCell>
+              <TableCell align="center">{game.metacritic}</TableCell>
+            </TableRow>
+          ))}
         </TableBody>
       </TableContainer>
     </Box>
   );
 };
+
+interface IGame {
+  id: number;
+  name: string;
+  released: string;
+  metacritic: number;
+}
+
+interface IGames {
+  listOfGames: IGame[];
+}
 
 export default ResultTable;

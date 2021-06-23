@@ -1,14 +1,15 @@
 import config from "../config.json";
 
 const fetchGameByName = async (title: string) => {
-  let games = null;
+  let listOfGames: Array<IGame> = [];
+
   try {
-    games = await fetch(
+    listOfGames = await fetch(
       `https://api.rawg.io/api/games?key=${config.apiKey}&search=${title}`
     )
       .then((res) => res.json())
       .then((data) => {
-        return data;
+        return data.results;
       });
   } catch (err) {
     console.log("SEARCH ", err);
@@ -19,7 +20,14 @@ const fetchGameByName = async (title: string) => {
   //   console.log(obj);
   //   console.log(obj.name);
   // });
-  return games.results;
+  return listOfGames;
 };
+
+interface IGame {
+  id: number;
+  name: string;
+  released: string;
+  metacritic: number;
+}
 
 export default fetchGameByName;

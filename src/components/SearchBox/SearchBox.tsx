@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button, TextField } from "@material-ui/core";
 import styled from "styled-components";
 
@@ -28,6 +28,7 @@ const SearchBox = ({ updateListofGames }: any) => {
       </Box>
       <Box>
         <TextField
+          data-testid="inputGameTextField"
           onChange={handleNameInput}
           variant="outlined"
           placeholder="Input game name..."
