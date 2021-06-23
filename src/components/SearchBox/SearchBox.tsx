@@ -11,7 +11,7 @@ const Text = styled.h1`
   font-size: 16px;
 `;
 
-const SearchBox = (updateListofGames: any) => {
+const SearchBox = ({ updateListofGames }: any) => {
   const [inputGameName, setInputGameName] = useState("");
 
   const handleButtonClick = () => {

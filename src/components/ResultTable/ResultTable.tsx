@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import SAMPLE_DATA from "../../sampleData.json";
 
 import {
   TableContainer,
@@ -15,7 +14,8 @@ const Box = styled.div`
   justify-content: center;
 `;
 
-const ResultTable = () => {
+const ResultTable = ({ listOfGames }: any) => {
+  console.log(listOfGames);
   return (
     <Box>
       <TableContainer>
@@ -23,21 +23,28 @@ const ResultTable = () => {
           <TableRow>
             <TableCell>ID</TableCell>
             <TableCell>Name</TableCell>
-            <TableCell>Username</TableCell>
-            <TableCell>Email</TableCell>
+            <TableCell>Release Date</TableCell>
+            <TableCell>Metacritic Score</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {SAMPLE_DATA.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell component="th" scope="row">
-                {row.id}
-              </TableCell>
-              <TableCell align="right">{row.name}</TableCell>
-              <TableCell align="right">{row.username}</TableCell>
-              <TableCell align="right">{row.email}</TableCell>
-            </TableRow>
-          ))}
+          {listOfGames.map(
+            (item: {
+              id: number;
+              name: string;
+              released: string;
+              metacritic: number;
+            }) => (
+              <TableRow key={item.id}>
+                <TableCell component="th" scope="row">
+                  {item.id}
+                </TableCell>
+                <TableCell align="right">{item.name}</TableCell>
+                <TableCell align="right">{item.released}</TableCell>
+                <TableCell align="right">{item.metacritic}</TableCell>
+              </TableRow>
+            )
+          )}
         </TableBody>
       </TableContainer>
     </Box>
